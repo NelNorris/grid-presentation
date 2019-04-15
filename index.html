@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Grid presentation</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, intial-scale=1" />
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:400,700" rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+  <main>
+    <div class="main-container">
+      <div class="central-container">
+        <header>
+          <h1>CSS grid magic</h1>
+					<ul>
+						<li>Simple</li>
+						<li>Powerful</li>
+						<li>Beautiful</li>
+					</ul>
+        </header>
+        <div class="section">
+          <h2>Introduction</h2>
+					<h3>Some good points about grid</h3>
+					<ul>
+						<li>Its main properties do what they say on the tin</li>
+						<li>It's easy to use</li>
+						<li>Can make responsive layouts without the need for Bootstrap grid or even media queries (more on that later)</li>
+						<li>Excellent cross-browser compatibility, including IE (more on that later)</li>
+					</ul>
+          <p>CSS grid is a layout framework that creates a grid, with rows and columns, allowing for easy layouts, without having to use position, floats, or Bootstrap grid. While <code>flex</code> display is used for single-direction content flow (x <em>or</em> y axis), <code>grid</code> is for multi-direction content flow (x <em>and</em> y).</p>
+          <p>Give a grid-container the <code>display</code> attribute <code>grid</code>/<code>inline-grid</code>, and its immediate children will become grid items. These will be placed according to the <code>grid-template</code> attributes specified.</p>
+					<div class="example">
+            <div class="grid-container">
+              <div class="grid-item">(・∀・)</div>
+              <div class="grid-item">(・∀・)</div>
+              <div class="grid-item">(・∀・)</div>
+              <div class="grid-item">(・∀・)</div>
+              <div class="grid-item">(・∀・)</div>
+							<div class="grid-item">(・∀・)</div>
+              <div class="grid-item">(・∀・)</div>
+              <div class="grid-item">(・∀・)</div>
+              <div class="grid-item">(・∀・)</div>
+              <div class="grid-item">(・∀・)</div>
+							<div class="grid-item">(・∀・)</div>
+              <div class="grid-item">(・∀・)</div>
+            </div>
+          </div>
+          <div class="code-container">
+            <code>
+              <span class="prop">.grid-container</span> {<br />
+                &nbsp; &nbsp;grid-template-columns: <span class="comment">// Define the layout of the columns; can specify width in various units and/or use repeat() function;</span><br />
+                &nbsp; &nbsp;grid-template-rows: <span class="comment">// Define the layout of the rows; can specify width in various units and/or use repeat() function;</span><br />
+                &nbsp; &nbsp;grid-column-gap: <span class="comment">// Define the space between the columns;</span><br />
+                &nbsp; &nbsp;grid-row-gap: <span class="comment">// Define the space between the rows;</span><br />
+                &nbsp; &nbsp;grid-gap: <span class="comment">// Shorthand for defining grid-column-gap and grid-row-gap in the same attribute, syntax is [grid-row-gap] [grid-column-gap];</span><br />
+              }<br /><br />
+              <span class="prop">.grid-item</span> {<br />
+                &nbsp; &nbsp;grid-colum: <span class="comment">// Specify the placement of the item on the grid column;</span><br />
+                &nbsp; &nbsp;grid-row: <span class="comment">// Specify the placement of the item on the grid row;</span><br />
+              }
+            </code>
+          </div>
+        </div>
+        <div class="section">
+          <h2>Child placement</h2>
+        </div>
+        <div class="section">
+          <h2>Grid Template</h2>
+          <p>In the rows/columns template attribute, you can specify a number of value types: fixed pixel widths, fluid percentile widths, auto width, or segment width.</p>
+          <div class="example" id="val">
+            <div class="grid-container">
+              <div class="grid-item">100px</div>
+              <div class="grid-item">30%</div>
+              <div class="grid-item">1fr</div>
+              <div class="grid-item">1fr</div>
+              <div class="grid-item">1fr</div>
+            </div>
+          </div>
+          <h3>Pixel or percentage values</h3>
+          <h3>auto</h3>
+          <p>Leaving the value as auto means the dimension of the row/column is determined by the box content of the grid item. Therefore items with more cotent take up more space, while items with less content will render smaller.</p>
+          <div class="example" id="auto">
+            <h5>Grid with 5 auto-width items</h5>
+            <div class="grid-container">
+              <div class="grid-item">A moderate amount of content</div>
+              <div class="grid-item">
+            One, two! One, two! And through and through <br />
+                  The vorpal blade went snicker-snack! <br />
+            He left it dead, and with its head <br />
+                  He went galumphing back. <br />
+                  <br />
+            “And hast thou slain the Jabberwock? <br />
+                  Come to my arms, my beamish boy! <br />
+            O frabjous day! Callooh! Callay!” <br />
+                  He chortled in his joy. <br />
+                  <br />
+            ’Twas brillig, and the slithy toves <br />
+                  Did gyre and gimble in the wabe: <br />
+            All mimsy were the borogoves, <br />
+                  And the mome raths outgrabe.<br />
+              </div>
+              <div class="grid-item">
+                <img src="https://placebear.com/200/300" alt="" />
+              </div>
+              <div class="grid-item">༼ つ ͠° ͟ ͟ʖ ͡° ༽つ</div>
+              <div class="grid-item">(・∀・)</div>
+            </div>
+          </div>
+          <h3>Segment: fr</h3>
+          <p>The <code>fr</code> measure means a <em>fraction</em>, like a division.</p>
+					<p>The client takes the total number of <code>fr</code> specified in the column/row, divides the space, and assigns the portion specified for the child in that area of the grid. So a <code>grid-template-columns</code> of <code>1fr 3fr 2fr</code> will divide the space into 6, place the first child in the first space taking up one space, the second child in the second space and spanning 3 columns, and the third child spanning the final 2 columns.</p>
+          <div class="example" id="frac">
+            <h5>Grid with 5 1fr-width items</h5>
+            <p>With 5 1fr items specified in the template columns, the grid is made of 5 equal segments. The segments expand to fill available space in the container.</p>
+            <div class="grid-container">
+              <div class="grid-item">A moderate amount of content</div>
+              <div class="grid-item">
+            One, two! One, two! And through and through <br />
+                  The vorpal blade went snicker-snack! <br />
+            He left it dead, and with its head <br />
+                  He went galumphing back. <br />
+                  <br />
+            “And hast thou slain the Jabberwock? <br />
+                  Come to my arms, my beamish boy! <br />
+            O frabjous day! Callooh! Callay!” <br />
+                  He chortled in his joy. <br />
+                  <br />
+            ’Twas brillig, and the slithy toves <br />
+                  Did gyre and gimble in the wabe: <br />
+            All mimsy were the borogoves, <br />
+                  And the mome raths outgrabe.<br />
+              </div>
+              <div class="grid-item">
+                <img src="https://placebear.com/200/300" alt="" />
+              </div>
+              <div class="grid-item">༼ つ ͠° ͟ ͟ʖ ͡° ༽つ</div>
+              <div class="grid-item">(・∀・)</div>
+            </div>
+          </div>
+          <h3>repeat</h3>
+          <p>These are possible inputs with the <code>repeat()</code>. The basic syntax is <code>repeat([number of rows/columns], [size of rows/columns])</code>.</p>
+          <div class="example" id="rep1">
+            <h5>Grid repeating 5 1fr-width items</h5>
+            <div class="grid-container">
+              <div class="grid-item">1</div>
+              <div class="grid-item">2</div>
+              <div class="grid-item">3</div>
+              <div class="grid-item">4</div>
+              <div class="grid-item">5</div>
+            </div>
+          </div>
+          <div class="example" id="rep2">
+            <h5>Grid repeating 5 100px-width items</h5>
+            <div class="grid-container">
+              <div class="grid-item">1</div>
+              <div class="grid-item">2</div>
+              <div class="grid-item">3</div>
+              <div class="grid-item">4</div>
+              <div class="grid-item">5</div>
+            </div>
+          </div>
+          <h4>auto-fit, auto-fill</h4>
+          <p>Specify <code>repeat()</code>, fit or fill, then a <code>minmax</code>.</p>
+          <div class="code-container">
+            <code>
+              <span class="prop">.grid-syntax</span> {<br />
+                &nbsp; &nbsp;grid-template-columns: <span class="comment">// repeat([auto-fit/auto-fill], minmax([min-width],[max-width]));</span><br />
+              }<br />
+              <span class="prop">.grid-container</span> {<br />
+                &nbsp; &nbsp;grid-template-columns: repeat(auto-fit, minmax(330px,1fr));<br />
+              }
+            </code>
+          </div>
+          <p>The difference between <code>auto-fill</code> and <code>auto-fit</code> is a bit like the difference between an <code>auto</code> and <code>1fr</code>. At smaller-container widths, the difference isn't appreciable, but it is at wider-container widths.</p>
+          <p>The <code>auto-fill</code> with <code>minmax(100px, 1fr)</code> will keep placing 100px-wide grid items, but will not make the grid items wider than the specified max width in order to fill excess space.</p>
+          <div class="example" id="exampleFill">
+            <div class="grid-container">
+              <div class="grid-item">1</div>
+              <div class="grid-item">2</div>
+              <div class="grid-item">3</div>
+              <div class="grid-item">4</div>
+              <div class="grid-item">5</div>
+            </div>
+          </div>
+          <p>The <code>auto-fit</code> with <code>minmax(100px, 1fr)</code> will keep placing 100px-wide grid items as far as the container width allows; when it runs out of space, it starts a new line. <code>auto-fit</code> grid items will widen to fill empty space in the container.</p>
+          <div class="example" id="exampleFit">
+            <div class="grid-container">
+              <div class="grid-item">1</div>
+              <div class="grid-item">2</div>
+              <div class="grid-item">3</div>
+              <div class="grid-item">4</div>
+              <div class="grid-item">5</div>
+            </div>
+          </div>
+          <p>The <code>repeat(auto-fit/auto-fill,minmax())</code> is particularly useful as you can easily make grid layouts that stack on smaller layouts without the need for any media queries.</p>
+        </div>
+        <div class="section">
+          <h2>IE fallbacks</h2>
+					<p>There is one thing you can say for Internet Explorer: it certainly exists.</p>
+					<p>It does, however, have pretty good support for <code>grid</code>; IE has always had an innate grid.</p>
+					<h3>But</h3>
+					<p>In this case, IE's interesting little foible is that it's a bit confused about where to place the grid items. As in it will place <em>all of them</em> at 1:1. You have to specify where each individual one goes. <em>All of them</em>.</p>
+					<p>This needs to be done with IE-specific CSS attributes, so you can easily do this without disturbing the layout in other, less rubbish browsers.</p>
+					<table>
+						<thead>
+							<tr>
+								<th>Generic syntax</th>
+								<th>IE syntax</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>display: grid;</code></td>
+								<td><code>display: -ms-grid;</code></td>
+							</tr>
+							<tr>
+								<td><code>grid-column</code></td>
+								<td><code>-ms-grid-column</code></td>
+							</tr>
+							<tr>
+								<td><code>grid-row</code></td>
+								<td><code>-ms-grid-row</code></td>
+							</tr>
+							<tr>
+								<td><code>grid-column: 1 / span 3;</code></td>
+								<td><code>-ms-grid-column: 1; -ms-grid-column-span: 3;</code></td>
+							</tr>
+						</tbody>
+					</table>
+        </div>
+    </div>
+  </main>
+</body>
+</html>
